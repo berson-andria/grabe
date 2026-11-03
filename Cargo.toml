@@ -1,0 +1,113 @@
+[package]
+name = "grabe"
+version = "0.1.0"
+edition = "2024"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+
+[workspace]
+resolver = "2"
+members = [
+    "crates/grabe-events",
+    "crates/grabe-watcher",
+    "crates/grabe-analyzer",
+    "crates/grabe-nlp",
+    "crates/grabe-correlator",
+    "crates/grabe-sandbox",
+    "crates/grabe-policy",
+    "crates/grabe-logger",
+    "crates/grabe-daemon",
+    "crates/grabe-cli",
+    "crates/grabe-interceptor-linux",
+    "crates/grabe-interceptor-win",
+    "crates/grabe-ui",
+]
+# Optional: what a plain `cargo build` / `cargo check` (without --workspace) builds.
+default-members = [
+    ".",
+    "crates/grabe-events",
+    "crates/grabe-watcher",
+    "crates/grabe-analyzer",
+    "crates/grabe-nlp",
+    "crates/grabe-correlator",
+    "crates/grabe-sandbox",
+    "crates/grabe-policy",
+    "crates/grabe-logger",
+    "crates/grabe-daemon",
+    "crates/grabe-cli",
+    "crates/grabe-interceptor-linux",
+]
+
+[workspace.dependencies]
+# Async runtime
+tokio       = { version = "1", features = ["full"] }
+tokio-util  = { version = "0.7" }
+
+# Serialization
+serde       = { version = "1", features = ["derive"] }
+serde_json  = { version = "1" }
+toml        = { version = "0.9.8" }
+
+# Error handling
+anyhow      = { version = "1" }
+thiserror   = { version = "2.0.20" }
+
+# Logging
+tracing              = { version = "0.1" }
+tracing-subscriber   = { version = "0.3", features = ["env-filter"] }
+
+# Crypto
+sha2        = { version = "0.11.0" }
+hmac        = { version = "0.13.0" }
+hex         = { version = "0.4" }
+
+# Analysis
+regex       = { version = "1" }
+dashmap     = { version = "6" }
+chrono      = { version = "0.4", features = ["serde"] }
+sysinfo     = { version = "0.40.0" }
+notify      = { version = "8.2.0" }
+semver      = { version = "1" }
+
+# Misc
+arrayvec    = { version = "0.7", default-features = false }
+bitflags    = { version = "2",   default-features = false }
+tempfile    = { version = "3" }
+clap        = { version = "4",   features = ["derive"] }
+crossterm   = { version = "0.27" }
+
+# Linux
+aya         = { version = "0.12" }
+aya-log     = { version = "0.2" }
+libc        = { version = "0.2" }
+nix         = { version = "0.28", features = ["sched", "mount", "user", "process", "signal", "fs"] }
+procfs      = { version = "0.16" }
+seccompiler = { version = "0.4" }
+signal-hook = { version = "0.3" }
+
+# Windows
+windows-sys = { version = "0.52" }
+
+# NLP runtime
+ort         = { version = "2.0.0-rc.10" }
+tokenizers  = { version = "0.19" }
+ndarray     = { version = "0.16" }
+
+# UI
+tauri                     = { version = "2" }
+tauri-plugin-notification = { version = "2" }
+
+# Internal crates
+grabe-events            = { path = "crates/grabe-events" }
+grabe-watcher           = { path = "crates/grabe-watcher" }
+grabe-analyzer          = { path = "crates/grabe-analyzer" }
+grabe-policy            = { path = "crates/grabe-policy" }
+grabe-logger            = { path = "crates/grabe-logger" }
+grabe-nlp               = { path = "crates/grabe-nlp" }
+grabe-correlator        = { path = "crates/grabe-correlator" }
+grabe-sandbox           = { path = "crates/grabe-sandbox" }
+grabe-interceptor-linux = { path = "crates/grabe-interceptor-linux" }
+grabe-interceptor-win   = { path = "crates/grabe-interceptor-win" }

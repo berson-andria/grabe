@@ -1,0 +1,24 @@
+[package]
+name    = "grabe-analyzer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+grabe-events  = { workspace = true }
+grabe-watcher = { workspace = true }   # reuses the Allowlist/BinaryEntry types for L1
+grabe-nlp     = { workspace = true }   # L3b
+regex     = { workspace = true }
+sha2      = { workspace = true }
+hex       = { workspace = true }
+serde     = { workspace = true }
+toml      = { workspace = true }
+dashmap   = { workspace = true }
+tokio     = { workspace = true }
+tracing   = { workspace = true }
+thiserror = { workspace = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+procfs = { workspace = true }          # L2 memory maps
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = ["Win32_Foundation", "Win32_System_Memory", "Win32_System_ProcessStatus", "Win32_System_Threading"] }

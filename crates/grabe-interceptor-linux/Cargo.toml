@@ -1,0 +1,15 @@
+[package]
+name = "grabe-interceptor-linux"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+grabe-events = { workspace = true }
+tokio     = { workspace = true }
+tracing   = { workspace = true }
+thiserror = { workspace = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+aya     = { workspace = true }
+aya-log = { workspace = true }
+libc    = { workspace = true }

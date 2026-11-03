@@ -1,0 +1,17 @@
+[package]
+name = "grabe-watcher"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+grabe-events = { workspace = true }
+semver    = { workspace = true }
+serde     = { workspace = true }
+sysinfo   = { workspace = true }
+thiserror = { workspace = true }
+toml      = { workspace = true }
+tokio     = { workspace = true }
+tracing   = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

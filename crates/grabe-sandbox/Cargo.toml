@@ -1,0 +1,19 @@
+[package]
+name = "grabe-sandbox"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+grabe-events = { workspace = true }
+tempfile  = { workspace = true }
+tokio     = { workspace = true }
+tracing   = { workspace = true }
+thiserror = { workspace = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+nix         = { workspace = true }
+seccompiler = { workspace = true }
+aya         = { workspace = true }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = ["Win32_Foundation", "Win32_System_JobObjects", "Win32_System_Threading"] }

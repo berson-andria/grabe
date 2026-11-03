@@ -1,0 +1,14 @@
+[package]
+name = "grabe-nlp"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+grabe-events = { workspace = true }
+ort        = { workspace = true }
+tokenizers = { workspace = true }
+ndarray    = { workspace = true }
+serde      = { workspace = true }
+tokio      = { workspace = true }
+tracing    = { workspace = true }
+thiserror  = { workspace = true }
